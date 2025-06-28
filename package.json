@@ -1,0 +1,56 @@
+{
+  "name": "autora",
+  "displayName": "Autora",
+  "description": "Autora is an AI-powered code assistant for JavaScript that completes functions and generates code from comments using your own OpenAI API key.",
+"keywords": ["javascript", "ai", "code generation", "openai", "inline suggestion"],
+  "version": "0.0.2",
+  "author": {
+  "name": "Ayush Pathak",
+  "email": "ayushpathak1102004@gmail.com",
+  "url": "https://www.linkedin.com/in/ayush-pathak-592a03264"
+},
+"publisher": "ayushpathak",
+"icon":"icon.png",
+  "engines": {
+    "vscode": "^1.101.0"
+  },
+  "categories": [
+    "Other"
+  ],
+"activationEvents": [
+  "onLanguage:javascript"
+],
+  "main": "./extension.js",
+  "contributes": {
+    "commands":[
+      {
+        "command": "autora.setApiKey",
+        "title": "Set OpenAI API Key"
+      },
+      {
+        "command": "autora.clearApiKey",
+        "title": "Clear OpenAI API Key"
+      }
+    ]
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.101.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.25.1",
+    "vscode": "^1.1.37"
+  },
+  "dependencies": {
+    "acorn": "^8.15.0",
+    "acorn-walk": "^8.3.4",
+    "axios": "^1.10.0",
+    "openai": "^5.8.2"
+  }
+}
