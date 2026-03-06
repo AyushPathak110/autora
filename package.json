@@ -3,7 +3,7 @@
   "displayName": "Autora",
   "description": "Autora is an AI-powered code assistant for JavaScript that completes functions and generates code from comments using your own OpenAI API key.",
 "keywords": ["javascript", "ai", "code generation", "openai", "inline suggestion"],
-  "version": "0.0.2",
+  "version": "1.0.0",
   "author": {
   "name": "Ayush Pathak",
   "email": "ayushpathak1102004@gmail.com",

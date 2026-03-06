@@ -3,6 +3,8 @@ const acorn = require("acorn");
 const walk = require("acorn-walk");
 const OpenAI = require("openai");
 
+let show = false;
+
 /**
  * @param {vscode.ExtensionContext} context
  */
@@ -231,8 +233,10 @@ function deactivate() {}
 async function fetchOpenAiSuggestion(prompt, code = "", context) {
   const apiKey = await context.secrets.get("openai-api-key");
 if (!apiKey) {
+  if(!show)
+    show = true
   vscode.window
-    .showErrorMessage("❌ Missing OpenAI API Key.", "Set Key Now")
+    .showErrorMessage("Missing OpenAI API Key.", "Set Key Now")
     .then((selection) => {
       if (selection === "Set Key Now") {
         vscode.commands.executeCommand("autora.setApiKey");
@@ -240,6 +244,7 @@ if (!apiKey) {
     });
   return null;
 }
+show = false
 
   const client = new OpenAI({ apiKey });
 
@@ -259,7 +264,7 @@ ${code}`,
     return cleanLLMOutput(response.choices[0].message.content.trim());
   } catch (err) {
     vscode.window.showErrorMessage(
-      "❌ OpenAI API error: " + (err.message || err)
+      "OpenAI API error: " + (err.message || err)
     );
     return null;
   }
